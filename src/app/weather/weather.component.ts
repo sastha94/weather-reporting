@@ -4,7 +4,7 @@ import { WeatherService } from "../service/weather.service";
 import { ToastrService } from "ngx-toastr";
 import { Router } from "@angular/router";
 import { Weather } from "../model/weather.model";
-import { environment } from "../environment";
+import { environment } from "../shared/environment";
 @Component({
   selector: "app-weather",
   templateUrl: "./weather.component.html",

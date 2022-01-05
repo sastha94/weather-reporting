@@ -4,6 +4,7 @@ import { Weather } from "../model/weather.model";
 import { WeatherService } from "../service/weather.service";
 import { DataService } from "../service/data.service";
 import { ToastrService } from "ngx-toastr";
+import { WeatherData } from "../shared/weather-data";
 
 @Component({
   selector: "app-weather-list",
@@ -89,7 +90,7 @@ export class WeatherListComponent implements OnInit {
     }
   }
 
-  removeRequest(event: {id: number, code: number}): void {
+  removeRequest(event: WeatherData): void {
     this.weatherData.splice(event.id, 1);
     this.toaster.info("Location " + event.code + " is Removed");
   }

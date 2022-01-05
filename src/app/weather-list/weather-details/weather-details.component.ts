@@ -2,6 +2,7 @@ import { ViewEncapsulation } from '@angular/compiler';
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { Weather } from '../../model/weather.model';
 import { WeatherService } from '../../service/weather.service';
+import { WeatherData } from '../../shared/weather-data';
 
 @Component({
   selector: 'app-weather-details',
@@ -12,7 +13,7 @@ export class WeatherDetailsComponent implements OnInit {
 
   @Input() getWeatherData: Weather
   @Input() getIndex: number
-  @Output() setrequestData = new EventEmitter<{id: number, code: number}>();
+  @Output() setrequestData = new EventEmitter<WeatherData>();
 
   constructor(private weatherService: WeatherService) { }
 
@@ -24,11 +25,8 @@ export class WeatherDetailsComponent implements OnInit {
   }
 
   removeCode(id: number, zipcode: number){
-    let locations = {
-      id: id,
-      code: zipcode
-    }
-    this.setrequestData.emit(locations);
+   let LocationData = {id: id, code: zipcode}
+    this.setrequestData.emit(LocationData);
   }
 
 }

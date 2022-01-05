@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpInterceptor, HttpHandler, HttpRequest, HttpEvent, HttpParams, HttpResponse, HttpErrorResponse } from "@angular/common/http";
 import { Observable, tap, throwError } from "rxjs";
-import { environment } from "./environment";
+import { environment } from "./shared/environment";
 import { ToastrService  } from "ngx-toastr";
 @Injectable()
 export class Interceptor implements HttpInterceptor {
