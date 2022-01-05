@@ -40,7 +40,6 @@ export class WeatherComponent implements OnInit {
             )
           );
         }
-        console.log(this.weatherData);
       } else {
         this.toaster.error("Sorry Forecasting not found!");
         this.router.navigate["/"];

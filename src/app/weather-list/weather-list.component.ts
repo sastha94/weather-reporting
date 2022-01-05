@@ -10,7 +10,6 @@ import { WeatherData } from "../shared/weather-data";
   selector: "app-weather-list",
   templateUrl: "./weather-list.component.html",
   styleUrls: ["./weather-list.component.css"],
-    encapsulation: ViewEncapsulation.None
 
 })
 export class WeatherListComponent implements OnInit {
@@ -24,6 +23,7 @@ export class WeatherListComponent implements OnInit {
   ) {}
 
   imagePath: string = this.weatherService.imageUrl;
+
 
   ngOnInit(): void {
     let localData = this.dataSerive.getItem("zipCode");
@@ -51,7 +51,7 @@ export class WeatherListComponent implements OnInit {
     let isExists = false;
     let zipCode = formData.value.zipcode;
     formData.resetForm();
-    let localData = this.dataSerive.getItem("zipData");
+    let localData = this.dataSerive.getItem("zipCode");
     if (localData) {
       this.zipCodes = localData;
     }
