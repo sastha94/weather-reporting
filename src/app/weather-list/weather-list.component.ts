@@ -79,8 +79,11 @@ export class WeatherListComponent implements OnInit {
               res.main.temp
             );
             this.weatherData.unshift(resData);
+           
+           if(this.zipCodes.indexOf(zipCode) == -1){
             this.zipCodes.unshift(zipCode);
             this.dataSerive.setItem("zipCode", this.zipCodes);
+           } 
             this.toaster.success("Location is added!");
           } else {
             this.toaster.error("Location not added!");
