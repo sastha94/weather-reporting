@@ -1,0 +1,21 @@
+
+<div class="container-fluid">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">5-day forecast for {{ cityName}}</h3>
+
+    </div>
+    <ul class="list-group" *ngFor="let wdata of weatherData">
+      <li class="list-group-item">
+        {{wdata.day * 1000 | date : 'fullDate'}}:
+        {{wdata.currentCondition}}
+        - Min: {{wdata.minTemp}}
+        - Max: {{wdata.maxTemp}}
+
+        <img class="icon" [src]="getImage(wdata.currentCondition)" alt="{{wdata.currentCondition}}">
+      </li>
+
+    </ul>
+  </div>
+  <a [routerLink] = "['/']" ><button class="btn btn-success" tabindex="0" id="mainPageBtn"> Back to main page</button></a>
+</div>

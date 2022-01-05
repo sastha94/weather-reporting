@@ -1,0 +1,12 @@
+input.ng-touched.ng-invalid{
+  border: 1px solid red;
+}
+.errorMsg{
+  color:red
+}
+
+.weather-detail {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}

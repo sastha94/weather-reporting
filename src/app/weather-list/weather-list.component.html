@@ -1,0 +1,26 @@
+<div class="container-fluid">
+
+<div class="well">
+  <form #zipCode ="ngForm" (ngSubmit)="onSubmit(zipCode)" >
+  <h2>Enter a zipcode:</h2> 
+  <input class="form-control" placeholder="ex:60780" type="text"   minlength="3" maxlength="7" name="zipcode" id="addLocation" (keypress)="numberOnly($event)" #zipcontrol="ngModel"  ngModel required>
+  <span *ngIf="!zipcontrol.valid && zipcontrol.touched" class="errorMsg"> Please Enter the Location(zipcode)</span>
+  <br>
+  <button class="btn btn-primary" id="addLocationBtn" [disabled]="zipCode.invalid">
+    Add location
+  </button>
+</form>
+</div>
+<div >
+<ng-container *ngIf="weatherData.length > 0;">
+<div class="well flex" *ngFor="let weather of weatherData; let i = index">
+  <app-weather-details class="weather-detail" [getWeatherData]="weather" [getIndex]="i" (setrequestData)="removeRequest($event)">
+  </app-weather-details>
+ </div>
+</ng-container>
+<ng-container *ngIf="weatherData.length == 0;">
+  <p>Locations not found, Add locations!</p>
+  </ng-container> 
+</div>
+
+</div>
