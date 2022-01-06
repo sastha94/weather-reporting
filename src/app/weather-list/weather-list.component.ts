@@ -40,7 +40,7 @@ export class WeatherListComponent implements OnInit {
               res.main.feels_like,
               res.main.temp
             );
-            this.weatherData.unshift(resData);
+            this.weatherData.push(resData);
           }
         });
       }
@@ -80,7 +80,7 @@ export class WeatherListComponent implements OnInit {
             );
             this.weatherData.unshift(resData);
            
-           if(this.zipCodes.indexOf(zipCode) == -1){
+           if(this.zipCodes.indexOf(zipCode) === -1){
             this.zipCodes.unshift(zipCode);
             this.dataSerive.setItem("zipCode", this.zipCodes);
            } 
@@ -95,6 +95,15 @@ export class WeatherListComponent implements OnInit {
 
   removeRequest(event: WeatherData): void {
     this.weatherData.splice(event.id, 1);
+    let localData = this.dataSerive.getItem("zipCode");
+    if(localData){
+     let getIndex =  localData.indexOf(event.code);
+     if(getIndex !== -1){
+       localData.splice(getIndex,1);
+       this.dataSerive.setItem("zipCode",localData);
+     }
+    }
+
     this.toaster.info("Location " + event.code + " is Removed");
   }
 
