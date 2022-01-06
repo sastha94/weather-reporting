@@ -15,15 +15,21 @@ export class Interceptor implements HttpInterceptor {
       params: new HttpParams().append('appid',this.appID)
     });
 
-    return next.handle(customReq).pipe(tap((event: any) => {
-      if (event instanceof HttpResponse) {
-      }
-  },
-  (error: any) => {
-      if (error instanceof HttpErrorResponse) {
-      this.broadcastFriendlyErrorMessage(error); 
-      }
-  }));
+    return next.handle(customReq).pipe(tap(
+        {
+            next: (event: any) =>{
+           if (event instanceof HttpResponse) {
+               console.log(event);
+             }
+            },
+            error: (err: any) =>{
+            if (err instanceof HttpErrorResponse) {
+                this.broadcastFriendlyErrorMessage(err); 
+            }
+            }
+        }
+  )
+  );
   }
 
   broadcastFriendlyErrorMessage(rejection: HttpErrorResponse) {
